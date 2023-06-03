@@ -20,7 +20,6 @@ import java.util.HashMap;
 public class MainController {
 
     // COMPONENTS
-
     @FXML
     private ComboBox<CityNode> combo_select_destination;
 
@@ -49,7 +48,6 @@ public class MainController {
     private TextField textfield_UCS_time_complex;
 
     // OTHER VARIABLES
-
     private static HashMap<Integer, CityNode> CITIES_MAP;
     private static boolean CHOSE_SOURCE_FLAG;
     private static boolean CHOSE_DESTINATION_FLAG;
@@ -62,7 +60,6 @@ public class MainController {
 
 
     // ACTION EVENTS
-
     @FXML
     void clearASPath(MouseEvent event) {
         LAST_AS_TRIP_GROUP.setVisible(false);
@@ -115,7 +112,7 @@ public class MainController {
         System.out.println("FINISHED A* SEARCH");
 
 
-        System.out.println("STARTING UC SEARCH  "  + source + " TO " + destination);
+        System.out.println("STARTING UC SEARCH  " + source + " TO " + destination);
         cleanNodeData();
         long time_ucsStart = System.nanoTime();
         UniformCostSearch UCSearch = new UniformCostSearch(CITIES_MAP);
@@ -135,9 +132,7 @@ public class MainController {
 
 
 
-
     // SETUP
-
     private void combosSetItems() {
         ObservableList<CityNode> cityNodeObservableList = FXCollections.observableArrayList(CITIES_MAP.values());
 
@@ -197,8 +192,7 @@ public class MainController {
     }
 
     // MAP INTERACTIONS
-
-    private void drawASPath(CityNode source, CityNode destination){
+    private void drawASPath(CityNode source, CityNode destination) {
         if (destination == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Couldn't find a path to your destination", ButtonType.CLOSE);
             alert.show();
@@ -212,7 +206,7 @@ public class MainController {
         image_canvas.getChildren().add(drawableTrip);
     }
 
-    private void drawUCSPath(CityNode source, CityNode destination){
+    private void drawUCSPath(CityNode source, CityNode destination) {
         if (destination == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Couldn't find a path to your destination", ButtonType.CLOSE);
             alert.show();
@@ -248,8 +242,9 @@ public class MainController {
 
         cleanNodeData();
     }
+
     private void cleanNodeData() {
-        for (CityNode node: CITIES_MAP.values()){
+        for (CityNode node : CITIES_MAP.values()) {
             node.cost = 0;
             node.previous = null;
         }
