@@ -4,28 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b069a49-ea0b-41e9-9ee6-902b2f532711" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/MainApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/MainController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ai/comp338_project_1/Palestine_Map.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ai/comp338_project_1/bootstrapfx.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ai/comp338_project_1/main-view.fxml" afterDir="false" />
+    <list default="true" id="2b069a49-ea0b-41e9-9ee6-902b2f532711" name="Changes" comment="V 0.2">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/AStarSearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/CityNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/Drawable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/Edge.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/UniformCostSearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/csvReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/files/Cities.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/files/Roads.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ai/comp338_project_1/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ai/comp338_project_1/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectId" id="2QZpPQSYE9xUmZFVqpcYa3IhAmG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -40,18 +49,22 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Projects/IntelliJ Projects/COMP338_Project_1/src/main/resources/ai/comp338_project_1",
+    "last_opened_file_path": "D:/Projects/IntelliJ Projects/COMP336_Project3",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\IntelliJ Projects\COMP338_Project_1\src\main\resources\ai\comp338_project_1" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\IntelliJ Projects\COMP338_Project_1\src\main\java\ai\comp338_project_1\search\files" />
     </key>
   </component>
   <component name="RunManager">
@@ -60,7 +73,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="ai.comp338_project_1.MainApplication" />
       <module name="COMP338_Project_1" />
-      <option name="WORKING_DIRECTORY" value="$FileDir$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/main/java/ai/comp338_project_1" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -84,7 +97,23 @@
       <option name="presentableId" value="Default" />
       <updated>1685568655184</updated>
       <workItem from="1685568656749" duration="2259000" />
+      <workItem from="1685570936855" duration="477000" />
+      <workItem from="1685607641282" duration="803000" />
+      <workItem from="1685624684429" duration="12236000" />
+      <workItem from="1685775544870" duration="163000" />
+      <workItem from="1685775854354" duration="3400000" />
+      <workItem from="1685787514200" duration="951000" />
+      <workItem from="1685793404958" duration="1287000" />
+      <workItem from="1685811171207" duration="13557000" />
     </task>
+    <task id="LOCAL-00001" summary="V 0.2">
+      <created>1685571367857</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685571367857</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,5 +121,22 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="V 0.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="V 0.2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ai/comp338_project_1/MainController.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

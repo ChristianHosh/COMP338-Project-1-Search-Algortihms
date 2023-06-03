@@ -6,6 +6,7 @@ module ai.comp338_project_ {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires annotations;
 
     opens ai.comp338_project_1 to javafx.fxml;
     exports ai.comp338_project_1;
