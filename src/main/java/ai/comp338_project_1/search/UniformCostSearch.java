@@ -1,34 +1,39 @@
 package ai.comp338_project_1.search;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.PriorityQueue;
+import java.util.Set;
 
 public class UniformCostSearch {
-    HashMap<Integer, CityNode> cities;
+    public static GraphNode findPath(GraphNode source, GraphNode destination) {
+        PriorityQueue<GraphNode> openList = new PriorityQueue<>();
+        PriorityQueue<GraphNode> closedList = new PriorityQueue<>();
 
-    public UniformCostSearch(HashMap<Integer, CityNode> cities) {
-        this.cities = new HashMap<>(cities);
-    }
+        openList.add(source);
+        boolean found = false;
 
-    public CityNode findPath(CityNode source, CityNode destination) {
-        PriorityQueue<CityNode> queue = new PriorityQueue<>();
-        boolean[] visited = new boolean[cities.size() + 1];
+        while (!openList.isEmpty()){
+            GraphNode currentNode = openList.poll();
+            closedList.add(currentNode);
 
-        queue.add(source);
-        while (!queue.isEmpty()) {
-            CityNode currentNode = queue.poll();
-            visited[currentNode.state] = true;
+            if (currentNode == destination) return currentNode;
 
-            if (currentNode == destination) {
-                return destination;
-            }
+            for(Edge edge: currentNode.neighbours){
+                GraphNode currentEdgeTarget = edge.target;
+                currentEdgeTarget.g_function = currentNode.g_function + edge.cost;
 
-            for (Edge neighbour : currentNode.getEdges()) {
+                if(!closedList.contains(currentEdgeTarget) && !openList.contains(currentEdgeTarget)){
+                    currentEdgeTarget.parent = currentNode;
+                    openList.add(currentEdgeTarget);
 
-                if (neighbour.roadDistance != 0 && !visited[neighbour.cityNode.state]) {
-                    neighbour.cityNode.cost = currentNode.cost + neighbour.roadDistance;
-                    neighbour.cityNode.previous = currentNode;
-                    queue.add(neighbour.cityNode);
+                }
+                else if((openList.contains(currentEdgeTarget))&&(currentEdgeTarget.g_function>currentNode.g_function+ edge.cost)){
+                    currentEdgeTarget.parent=currentNode;
+                    currentEdgeTarget.g_function = currentNode.g_function+ edge.cost;
+                    openList.remove(currentEdgeTarget);
+                    openList.add(currentEdgeTarget);
+
                 }
             }
         }

@@ -21,10 +21,10 @@ public class MainController {
 
     // COMPONENTS
     @FXML
-    private ComboBox<CityNode> combo_select_destination;
+    private ComboBox<GraphNode> combo_select_destination;
 
     @FXML
-    private ComboBox<CityNode> combo_select_source;
+    private ComboBox<GraphNode> combo_select_source;
 
     @FXML
     private AnchorPane image_canvas;
@@ -48,11 +48,11 @@ public class MainController {
     private TextField textfield_UCS_time_complex;
 
     // OTHER VARIABLES
-    private static HashMap<Integer, CityNode> CITIES_MAP;
+    private static HashMap<Integer, GraphNode> CITIES_MAP;
     private static boolean CHOSE_SOURCE_FLAG;
     private static boolean CHOSE_DESTINATION_FLAG;
-    private CityNode selectedSource = null;
-    private CityNode selectedDestination = null;
+    private GraphNode selectedSource = null;
+    private GraphNode selectedDestination = null;
     private final Label hoverLabel = new Label();
     private static Group LAST_UCS_TRIP_GROUP = new Group();
     private static Group LAST_AS_TRIP_GROUP = new Group();
@@ -87,8 +87,8 @@ public class MainController {
 
     @FXML
     void run(ActionEvent event) {
-        CityNode source = combo_select_source.getSelectionModel().getSelectedItem();
-        CityNode destination = combo_select_destination.getSelectionModel().getSelectedItem();
+        GraphNode source = combo_select_source.getSelectionModel().getSelectedItem();
+        GraphNode destination = combo_select_destination.getSelectionModel().getSelectedItem();
         if (source == null || destination == null) {
             source = selectedSource;
             destination = selectedDestination;
@@ -100,25 +100,20 @@ public class MainController {
         }
 
         clearMap();
-        System.out.println("CLEARED MAP 1");
 
-        System.out.println("STARTING A* SEARCH WITH " + source + " TO " + destination);
         cleanNodeData();
         long time_asStart = System.nanoTime();
-        AStarSearch starSearch = new AStarSearch(CITIES_MAP);
-        CityNode starPathDestination = starSearch.findPath(source, destination);
+        GraphNode starPathDestination = AStarSearch.findPath(source, destination);
         long time_asEnd = System.nanoTime();
-//        drawASPath(source, starPathDestination);
+        drawASPath(source, starPathDestination);
         System.out.println("FINISHED A* SEARCH");
 
 
         System.out.println("STARTING UC SEARCH  " + source + " TO " + destination);
         cleanNodeData();
         long time_ucsStart = System.nanoTime();
-        UniformCostSearch UCSearch = new UniformCostSearch(CITIES_MAP);
-        CityNode ucPathDestination = UCSearch.findPath(source, destination);
+        GraphNode ucPathDestination = UniformCostSearch.findPath(source, destination);
         long time_ucsEnd = System.nanoTime();
-
         drawUCSPath(source, ucPathDestination);
         System.out.println("FINISHED UC SEARCH");
 
@@ -134,7 +129,7 @@ public class MainController {
 
     // SETUP
     private void combosSetItems() {
-        ObservableList<CityNode> cityNodeObservableList = FXCollections.observableArrayList(CITIES_MAP.values());
+        ObservableList<GraphNode> cityNodeObservableList = FXCollections.observableArrayList(CITIES_MAP.values());
 
         combo_select_source.setItems(cityNodeObservableList);
         combo_select_destination.setItems(cityNodeObservableList);
@@ -148,14 +143,14 @@ public class MainController {
     }
 
     private void drawPointsOnMap() {
-        for (CityNode city : CITIES_MAP.values()) {
+        for (GraphNode city : CITIES_MAP.values()) {
             Circle cityDot = createCityDot(city);
             image_canvas.getChildren().add(cityDot);
         }
     }
 
-    private Circle createCityDot(CityNode city) {
-        double[] coordinates = city.getCoordinates();
+    private Circle createCityDot(GraphNode node) {
+        double[] coordinates = node.getCoordinates();
 
         Circle cityDot = new Circle();
         cityDot.setFill(Color.TRANSPARENT);
@@ -163,9 +158,9 @@ public class MainController {
         cityDot.setLayoutY(coordinates[1]);
         cityDot.setRadius(10);
         cityDot.setStyle("-fx-cursor: hand");
-        cityDot.setOnMouseClicked(mouseEvent -> clickOnCity(city));
+        cityDot.setOnMouseClicked(mouseEvent -> clickOnCity(node));
         cityDot.setOnMouseEntered(mouseEvent -> {
-            hoverLabel.setText(city.getName());
+            hoverLabel.setText(node.city);
             hoverLabel.setLayoutX(coordinates[0] - 20);
             hoverLabel.setLayoutY(coordinates[1] - 20);
             hoverLabel.setVisible(true);
@@ -176,7 +171,7 @@ public class MainController {
         return cityDot;
     }
 
-    private void clickOnCity(CityNode selectedCity) {
+    private void clickOnCity(GraphNode selectedCity) {
         if (!CHOSE_SOURCE_FLAG) {
             CHOSE_SOURCE_FLAG = true;
             selectedSource = selectedCity;
@@ -192,21 +187,20 @@ public class MainController {
     }
 
     // MAP INTERACTIONS
-    private void drawASPath(CityNode source, CityNode destination) {
+    private void drawASPath(GraphNode source, GraphNode destination) {
         if (destination == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Couldn't find a path to your destination", ButtonType.CLOSE);
             alert.show();
             return;
         }
 
-        Group drawableTrip = Drawable.drawPathFromDestination(destination, source, Color.LIGHTBLUE);
-        clearMap();
+        Group drawableTrip = Drawable.drawPathFromDestination(destination, source, Color.BLUE);
 
         LAST_AS_TRIP_GROUP = drawableTrip;
         image_canvas.getChildren().add(drawableTrip);
     }
 
-    private void drawUCSPath(CityNode source, CityNode destination) {
+    private void drawUCSPath(GraphNode source, GraphNode destination) {
         if (destination == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "Couldn't find a path to your destination", ButtonType.CLOSE);
             alert.show();
@@ -214,7 +208,6 @@ public class MainController {
         }
 
         Group drawableTrip = Drawable.drawPathFromDestination(destination, source, Color.RED);
-        clearMap();
 
         LAST_UCS_TRIP_GROUP = drawableTrip;
         image_canvas.getChildren().add(drawableTrip);
@@ -225,6 +218,9 @@ public class MainController {
         CHOSE_SOURCE_FLAG = false;
         if (LAST_UCS_TRIP_GROUP != null) {
             image_canvas.getChildren().remove(LAST_UCS_TRIP_GROUP);
+        }
+        if (LAST_AS_TRIP_GROUP != null){
+            image_canvas.getChildren().remove(LAST_AS_TRIP_GROUP);
         }
     }
 
@@ -244,9 +240,10 @@ public class MainController {
     }
 
     private void cleanNodeData() {
-        for (CityNode node : CITIES_MAP.values()) {
-            node.cost = 0;
-            node.previous = null;
+        for (GraphNode node : CITIES_MAP.values()) {
+            node.g_function = Double.MAX_VALUE;
+            node.f_function = Double.MAX_VALUE;
+            node.parent = null;
         }
     }
 }

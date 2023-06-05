@@ -35,13 +35,13 @@ public class Drawable {
         return circle;
     }
 
-    public static Group drawPathFromDestination(CityNode destination, CityNode source, Color pathColor) {
-        ArrayList<CityNode> path = new ArrayList<>();
+    public static Group drawPathFromDestination(GraphNode destination, GraphNode source, Color pathColor) {
+        ArrayList<GraphNode> path = new ArrayList<>();
 
-        CityNode current = destination;
+        GraphNode current = destination;
         while (current != null) {
             path.add(current);
-            current = current.previous;
+            current = current.parent;
         }
 
         if ((path.get(0)) != destination || path.get(path.size() - 1) != source) {
@@ -62,7 +62,7 @@ public class Drawable {
 
             currentTrip.getChildren().addAll(line, endCircle);
         }
-        Circle destinationCircle = createPathCircle(destinationPoint, Color.RED);
+        Circle destinationCircle = createPathCircle(destinationPoint, pathColor);
         currentTrip.getChildren().add(destinationCircle);
         currentTrip.toFront();
 

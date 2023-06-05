@@ -4,19 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b069a49-ea0b-41e9-9ee6-902b2f532711" name="Changes" comment="V 0.2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/AStarSearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/CityNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/Drawable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/Edge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/UniformCostSearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/csvReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/files/Cities.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/files/Roads.csv" afterDir="false" />
+    <list default="true" id="2b069a49-ea0b-41e9-9ee6-902b2f532711" name="Changes" comment="V 0.4&#10;Cleaned Code">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/GraphNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/files/oldRoads.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/AStarSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/AStarSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/CityNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/CityNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/Drawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/Edge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/UniformCostSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/UniformCostSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/csvReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/csvReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/files/Roads.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/files/Roads.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ai/comp338_project_1/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ai/comp338_project_1/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,23 +41,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Projects/IntelliJ Projects/COMP336_Project3",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/IntelliJ Projects/COMP336_Project3&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Projects\IntelliJ Projects\COMP338_Project_1\src\main\resources\ai\comp338_project_1" />
@@ -105,6 +104,8 @@
       <workItem from="1685787514200" duration="951000" />
       <workItem from="1685793404958" duration="1287000" />
       <workItem from="1685811171207" duration="13557000" />
+      <workItem from="1685954255440" duration="5522000" />
+      <workItem from="1685963413894" duration="1132000" />
     </task>
     <task id="LOCAL-00001" summary="V 0.2">
       <created>1685571367857</created>
@@ -123,17 +124,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="V 0.2" />
     <option name="LAST_COMMIT_MESSAGE" value="V 0.2" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ai/comp338_project_1/MainController.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

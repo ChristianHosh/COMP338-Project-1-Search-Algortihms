@@ -1,23 +1,20 @@
 package ai.comp338_project_1.search;
 
 public class Edge {
-    CityNode cityNode;
-    double roadDistance;
-    double airDistance;
+    public final double cost;
+    public final GraphNode target;
 
+    public Edge(GraphNode targetNode, double costVal){
+        cost = costVal;
+        target = targetNode;
 
-    public Edge(CityNode cityNode, double roadDistance, double airDistance) {
-        this.cityNode = cityNode;
-        this.roadDistance = roadDistance;
-        this.airDistance = airDistance;
     }
 
     @Override
     public String toString() {
         return "Edge{" +
-                "cityNode=" + cityNode +
-                ", roadDistance=" + roadDistance +
-                ", airDistance=" + airDistance +
+                "cost=" + cost +
+                ", target=" + target +
                 '}';
     }
 }
