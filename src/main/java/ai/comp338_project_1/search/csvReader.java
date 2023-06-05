@@ -58,7 +58,8 @@ public class csvReader {
                     GraphNode currentColCity = CITY_NODES.get(col);
 
                     String scannedColumn = colsString[col-1];
-                    if (!scannedColumn.contains("[123456789]")) continue;
+
+                    if (scannedColumn.equalsIgnoreCase("NONE")) continue;
 
                     double scannedDistance = Double.parseDouble(scannedColumn);
                     currentRowCity.addBranch(scannedDistance, currentColCity);

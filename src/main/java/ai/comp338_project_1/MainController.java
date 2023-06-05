@@ -57,8 +57,6 @@ public class MainController {
     private static Group LAST_UCS_TRIP_GROUP = new Group();
     private static Group LAST_AS_TRIP_GROUP = new Group();
 
-
-
     // ACTION EVENTS
     @FXML
     void clearASPath(MouseEvent event) {
@@ -101,6 +99,7 @@ public class MainController {
 
         clearMap();
 
+        System.out.println("STARTING AS SEARCH  " + source + " TO " + destination);
         cleanNodeData();
         long time_asStart = System.nanoTime();
         GraphNode starPathDestination = AStarSearch.findPath(source, destination);
@@ -112,20 +111,18 @@ public class MainController {
         System.out.println("STARTING UC SEARCH  " + source + " TO " + destination);
         cleanNodeData();
         long time_ucsStart = System.nanoTime();
-        GraphNode ucPathDestination = UniformCostSearch.findPath(source, destination);
+        GraphNode ucPathDestination = DepthFirstSearch.findPath(source, destination);
         long time_ucsEnd = System.nanoTime();
         drawUCSPath(source, ucPathDestination);
         System.out.println("FINISHED UC SEARCH");
 
-        long time_ucsDuration = (time_ucsEnd - time_ucsStart) / 1000;  //divide by 1000000 to get milliseconds.
+        long time_ucsDuration = (time_ucsEnd - time_ucsStart) / 1000;
         long time_asDuration = (time_asEnd - time_asStart) / 1000;
 
         textfield_UCS_time.setText(time_ucsDuration + " μs");
         textfield_AS_time.setText(time_asDuration + " μs");
 
     }
-
-
 
     // SETUP
     private void combosSetItems() {
