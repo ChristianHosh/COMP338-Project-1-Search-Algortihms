@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b069a49-ea0b-41e9-9ee6-902b2f532711" name="Changes" comment="V 0.5&#10;Redid search algorithms and cleaned up code">
+    <list default="true" id="2b069a49-ea0b-41e9-9ee6-902b2f532711" name="Changes" comment="V 1.0&#10;DPS and A* Project">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/CityNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/Drawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/UniformCostSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/DepthFirstSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/AStarSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/AStarSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/DepthFirstSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/DepthFirstSearch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/GraphNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/GraphNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/csvReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/csvReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/files/Cities.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/files/Cities.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/files/Roads.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ai/comp338_project_1/search/files/Roads.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ai/comp338_project_1/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ai/comp338_project_1/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +101,7 @@
       <workItem from="1685811171207" duration="13557000" />
       <workItem from="1685954255440" duration="5522000" />
       <workItem from="1685963413894" duration="1440000" />
-      <workItem from="1685978407865" duration="2168000" />
+      <workItem from="1685978407865" duration="6193000" />
     </task>
     <task id="LOCAL-00001" summary="V 0.2">
       <created>1685571367857</created>
@@ -118,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685964613462</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="V 0.6&#10;Refactored UCS into DPS">
+      <created>1685992180165</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685992180165</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,7 +134,9 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="V 0.2" />
     <MESSAGE value="V 0.5&#10;Redid search algorithms and cleaned up code" />
-    <option name="LAST_COMMIT_MESSAGE" value="V 0.5&#10;Redid search algorithms and cleaned up code" />
+    <MESSAGE value="V 0.6&#10;Refactored UCS into DPS" />
+    <MESSAGE value="V 1.0&#10;DPS and A* Project" />
+    <option name="LAST_COMMIT_MESSAGE" value="V 1.0&#10;DPS and A* Project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
 
 public class csvReader {
@@ -62,7 +63,10 @@ public class csvReader {
                     if (scannedColumn.equalsIgnoreCase("NONE")) continue;
 
                     double scannedDistance = Double.parseDouble(scannedColumn);
-                    currentRowCity.addBranch(scannedDistance, currentColCity);
+
+                    if (new Random().nextBoolean())
+                        currentRowCity.addBranch(scannedDistance, currentColCity);
+
                 }
                 row++;
             }

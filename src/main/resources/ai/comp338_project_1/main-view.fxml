@@ -15,7 +15,7 @@
    <children>
       <AnchorPane fx:id="image_canvas" layoutX="14.0" layoutY="14.0" prefHeight="512.0" prefWidth="273.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
          <children>
-            <ImageView fx:id="image_map" fitHeight="512.0" fitWidth="312.0" layoutX="25.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fitHeight="512.0" fitWidth="312.0" layoutX="25.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
                   <Image url="@Palestine_Map.png" />
                </image>
@@ -35,8 +35,14 @@
                   </HBox>
                   <HBox alignment="CENTER" spacing="5.0">
                      <children>
+                        <Label prefHeight="59.0" prefWidth="90.0" styleClass="h4" text="Total Distance" wrapText="true" />
+                        <TextField fx:id="textfield_AS_distance" editable="false" prefHeight="28.0" prefWidth="167.0" styleClass="bg-info" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="5.0">
+                     <children>
                         <Label prefHeight="59.0" prefWidth="90.0" styleClass="h4" text="Time Complexity" wrapText="true" />
-                        <TextField fx:id="textfield_AS_time_complex" editable="false" prefHeight="28.0" prefWidth="167.0" styleClass="bg-info" />
+                        <TextField fx:id="textfield_AS_time_complex1" editable="false" prefHeight="28.0" prefWidth="167.0" styleClass="bg-info" text="O(bd)" />
                      </children>
                   </HBox>
                   <Button mnemonicParsing="false" onMouseEntered="#clearASPath" onMouseExited="#showASPath" prefHeight="44.0" prefWidth="230.0" text="Hide Path">
@@ -52,19 +58,25 @@
       </AnchorPane>
       <AnchorPane layoutX="646.0" layoutY="14.0" prefHeight="398.0" prefWidth="300.0" style="-fx-background-color: #8A9198;" styleClass="panel" AnchorPane.bottomAnchor="128.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
          <children>
-            <Label layoutX="11.0" layoutY="14.0" prefHeight="74.0" prefWidth="278.0" styleClass="h2" text="Uniform Cost Search Algorithm" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="11.0" layoutY="14.0" prefHeight="74.0" prefWidth="278.0" styleClass="h2" text="Depth First Search Algorithm" textAlignment="CENTER" wrapText="true" />
             <VBox alignment="TOP_CENTER" layoutX="18.0" layoutY="102.0" spacing="5.0" AnchorPane.topAnchor="110.0">
                <children>
                   <HBox alignment="TOP_CENTER" spacing="5.0">
                      <children>
                         <Label styleClass="h4" text="Time Took" />
-                        <TextField fx:id="textfield_UCS_time" editable="false" prefHeight="28.0" prefWidth="167.0" styleClass="bg-danger" />
+                        <TextField fx:id="textfield_DPS_time" editable="false" prefHeight="28.0" prefWidth="167.0" styleClass="bg-danger" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" spacing="5.0">
+                     <children>
+                        <Label prefHeight="59.0" prefWidth="90.0" styleClass="h4" text="Total Distance" wrapText="true" />
+                        <TextField fx:id="textfield_DPS_distance" editable="false" prefHeight="28.0" prefWidth="167.0" styleClass="bg-danger" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" spacing="5.0">
                      <children>
                         <Label prefHeight="59.0" prefWidth="90.0" styleClass="h4" text="Time Complexity" wrapText="true" />
-                        <TextField fx:id="textfield_UCS_time_complex" editable="false" prefHeight="28.0" prefWidth="167.0" styleClass="bg-danger" />
+                        <TextField fx:id="textfield_AS_time_complex11" editable="false" prefHeight="28.0" prefWidth="167.0" styleClass="bg-danger" text="O(b^m)" />
                      </children>
                   </HBox>
                   <Button mnemonicParsing="false" onMouseEntered="#clearUCSPath" onMouseExited="#showUCSPath" prefHeight="44.0" prefWidth="230.0" text="Hide Path">
@@ -96,7 +108,7 @@
             </ComboBox>
             <Label layoutX="14.0" layoutY="13.0" styleClass="h4" text="Source" />
             <Label layoutX="201.0" layoutY="15.0" styleClass="h4" text="Destination" />
-            <Button fx:id="button_run" layoutX="392.0" layoutY="41.0" mnemonicParsing="false" onAction="#run" text="Run">
+            <Button layoutX="392.0" layoutY="41.0" mnemonicParsing="false" onAction="#run" text="Run">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-lg" />

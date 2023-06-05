@@ -14,6 +14,7 @@ public class GraphNode implements Comparable<GraphNode> {
 
     public double f_function = Double.MAX_VALUE;
     public double g_function = Double.MAX_VALUE;
+    public double totalCost = 0;
     public GraphNode parent;
 
     public GraphNode(String city, double xLocation, double yLocation, double latitude, double longitude) {
@@ -29,7 +30,9 @@ public class GraphNode implements Comparable<GraphNode> {
     }
 
     public double h_function(GraphNode target){
-        return Math.sqrt(Math.pow(target.latitude - this.latitude, 2) + (Math.pow(target.longitude - this.longitude, 2))) * 111;
+        double h = Math.sqrt(Math.pow(target.latitude - this.latitude, 2) + (Math.pow(target.longitude - this.longitude, 2))) * 111;
+        System.out.println("*AIR DISTANCE FROM " + this.city + " TO " + target.city + ": " + h);
+        return h;
     }
 
     public String toString() {

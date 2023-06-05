@@ -20,6 +20,7 @@ public class DepthFirstSearch {
                 GraphNode currentEdgeTarget = edge.target;
                 if (!openList.contains(currentEdgeTarget) && !closedList.contains(currentEdgeTarget)){
                     currentEdgeTarget.parent = currentNode;
+                    currentEdgeTarget.totalCost = edge.cost + currentNode.totalCost;
                     openList.push(currentEdgeTarget);
                 }
             }

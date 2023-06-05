@@ -1,7 +1,5 @@
 package ai.comp338_project_1.search;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.PriorityQueue;
 
 public class AStarSearch {
@@ -25,11 +23,13 @@ public class AStarSearch {
                     currentEdgeTarget.parent = currentNode;
                     currentEdgeTarget.g_function = newWeight;
                     currentEdgeTarget.f_function = currentEdgeTarget.g_function + currentEdgeTarget.h_function(destination);
+                    currentEdgeTarget.totalCost = edge.cost + currentNode.totalCost;
                     openList.add(currentEdgeTarget);
                 } else {
                     if (newWeight < currentEdgeTarget.g_function) {
                         currentEdgeTarget.parent = currentNode;
                         currentEdgeTarget.g_function = newWeight;
+                        currentEdgeTarget.totalCost = edge.cost + currentNode.totalCost;
                         currentEdgeTarget.f_function = currentEdgeTarget.g_function + currentEdgeTarget.h_function(destination);
 
                         if (closedList.contains(currentEdgeTarget)) {

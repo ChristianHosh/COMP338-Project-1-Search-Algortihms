@@ -7,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -30,22 +29,16 @@ public class MainController {
     private AnchorPane image_canvas;
 
     @FXML
-    private Button button_run;
-
-    @FXML
-    private ImageView image_map;
-
-    @FXML
     private TextField textfield_AS_time;
 
     @FXML
-    private TextField textfield_AS_time_complex;
+    private TextField textfield_AS_distance;
 
     @FXML
-    private TextField textfield_UCS_time;
+    private TextField textfield_DPS_time;
 
     @FXML
-    private TextField textfield_UCS_time_complex;
+    private TextField textfield_DPS_distance;
 
     // OTHER VARIABLES
     private static HashMap<Integer, GraphNode> CITIES_MAP;
@@ -87,6 +80,9 @@ public class MainController {
     void run(ActionEvent event) {
         GraphNode source = combo_select_source.getSelectionModel().getSelectedItem();
         GraphNode destination = combo_select_destination.getSelectionModel().getSelectedItem();
+
+        double starDistance = 0;
+        double dfsDistance = 0;
         if (source == null || destination == null) {
             source = selectedSource;
             destination = selectedDestination;
@@ -103,6 +99,9 @@ public class MainController {
         cleanNodeData();
         long time_asStart = System.nanoTime();
         GraphNode starPathDestination = AStarSearch.findPath(source, destination);
+
+        if (starPathDestination != null) starDistance = starPathDestination.totalCost / 1000;
+
         long time_asEnd = System.nanoTime();
         drawASPath(source, starPathDestination);
         System.out.println("FINISHED A* SEARCH");
@@ -110,17 +109,23 @@ public class MainController {
 
         System.out.println("STARTING UC SEARCH  " + source + " TO " + destination);
         cleanNodeData();
-        long time_ucsStart = System.nanoTime();
-        GraphNode ucPathDestination = DepthFirstSearch.findPath(source, destination);
-        long time_ucsEnd = System.nanoTime();
-        drawUCSPath(source, ucPathDestination);
+        long time_dpsStart = System.nanoTime();
+        GraphNode dpsPathDestination = DepthFirstSearch.findPath(source, destination);
+
+        if (dpsPathDestination != null) dfsDistance = dpsPathDestination.totalCost / 1000;
+
+        long time_dpsEnd = System.nanoTime();
+        drawUCSPath(source, dpsPathDestination);
         System.out.println("FINISHED UC SEARCH");
 
-        long time_ucsDuration = (time_ucsEnd - time_ucsStart) / 1000;
+        long time_ucsDuration = (time_dpsEnd - time_dpsStart) / 1000;
         long time_asDuration = (time_asEnd - time_asStart) / 1000;
 
-        textfield_UCS_time.setText(time_ucsDuration + " μs");
+        textfield_DPS_time.setText(time_ucsDuration + " μs");
         textfield_AS_time.setText(time_asDuration + " μs");
+
+        textfield_DPS_distance.setText(dfsDistance + " km");
+        textfield_AS_distance.setText(starDistance + " km");
 
     }
 
@@ -240,6 +245,7 @@ public class MainController {
         for (GraphNode node : CITIES_MAP.values()) {
             node.g_function = Double.MAX_VALUE;
             node.f_function = Double.MAX_VALUE;
+            node.totalCost = 0;
             node.parent = null;
         }
     }
