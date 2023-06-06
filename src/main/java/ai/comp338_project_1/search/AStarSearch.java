@@ -12,8 +12,9 @@ public class AStarSearch {
 
         while (!openList.isEmpty()) {
             GraphNode currentNode = openList.peek();
-            if (currentNode == destination) return currentNode;
 
+            openList.remove(currentNode);
+            closedList.add(currentNode);
 
             for (Edge edge : currentNode.neighbours) {
                 GraphNode currentEdgeTarget = edge.target;
@@ -38,11 +39,9 @@ public class AStarSearch {
                         }
                     }
                 }
-                openList.remove(currentNode);
-                closedList.add(currentNode);
             }
         }
-        return null;
+        return destination;
     }
 
 

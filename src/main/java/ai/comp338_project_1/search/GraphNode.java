@@ -30,9 +30,7 @@ public class GraphNode implements Comparable<GraphNode> {
     }
 
     public double h_function(GraphNode target){
-        double h = Math.sqrt(Math.pow(target.latitude - this.latitude, 2) + (Math.pow(target.longitude - this.longitude, 2))) * 111;
-        System.out.println("*AIR DISTANCE FROM " + this.city + " TO " + target.city + ": " + h);
-        return h;
+        return Math.abs(this.latitude - target.latitude) + Math.abs(this.longitude - target.longitude);
     }
 
     public String toString() {
